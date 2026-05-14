@@ -1,4 +1,4 @@
-import { getInquiries } from "../../actions";
+import { getInquiries } from "../actions";
 
 export const dynamic = "force-dynamic";
 
