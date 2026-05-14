@@ -1,15 +1,16 @@
 "use server"; 
 
 import { PrismaClient } from "@prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-// 1. Set up the specific SQLite adapter
-const adapter = new PrismaBetterSqlite3({ 
-  url: process.env.DATABASE_URL ?? "file:./dev.db" 
+// The App gets the high-speed pooled Postgres connection!
+// No more SQLite adapter needed.
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.POSTGRES_PRISMA_URL
+    }
+  }
 });
-
-// 2. Pass the adapter into the Prisma Client
-const prisma = new PrismaClient();
 
 export async function submitInquiry(formData: FormData) {
   const name = formData.get("name") as string;
@@ -24,10 +25,8 @@ export async function submitInquiry(formData: FormData) {
     },
   });
   
-  console.log("✅ Successfully saved to Databae:", newInquiry);
+  console.log("✅ Successfully saved to Database:", newInquiry);
 }
-
-
 
 export async function getInquiries() {
   // findMany() grabs all rows. 

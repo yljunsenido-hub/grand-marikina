@@ -4,19 +4,17 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 generator client {
   provider = "prisma-client-js"
-  // Let Prisma put the generated client in its default, safe location!
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "postgresql"
 }
 
+// Your models stay exactly the same below...
 model Inquiry {
-  id         String       @id @default(cuid())
-  name       String   
-  email      String   
-  guestTotal Int          @default(50)
-  createdAt  DateTime     @default(now())     
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  guestTotal Int      @default(50)
+  createdAt  DateTime @default(now())
 }
