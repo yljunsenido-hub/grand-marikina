@@ -1,9 +1,9 @@
-import { defineConfig, env } from "@prisma/config";
+import { defineConfig } from "@prisma/config";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    // The CLI ONLY needs the direct, non-pooling connection to build tables!
-    url: env("POSTGRES_URL_NON_POOLING")
+    // process.env prevents the strict Prisma crash and waits for Vercel
+    url: process.env.POSTGRES_URL_NON_POOLING as string
   }
 });
