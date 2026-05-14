@@ -1,6 +1,6 @@
 "use server"
 
-import { prisma } from "../grand-marikina/lib/prisma"
+import { prisma } from "../lib/prisma"
 
 export async function submitInquiry(formData: FormData) {
   const name = formData.get("name") as string
