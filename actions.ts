@@ -9,7 +9,7 @@ const adapter = new PrismaBetterSqlite3({
 });
 
 // 2. Pass the adapter into the Prisma Client
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient();
 
 export async function submitInquiry(formData: FormData) {
   const name = formData.get("name") as string;
