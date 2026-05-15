@@ -1,9 +1,23 @@
 import { getInquiries } from "../actions";
 import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server"; // 1. Import the server user
+import { redirect } from "next/navigation"; // 2. Import Next.js redirect
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
+  // 3. Grab the currently logged-in user's profile from Clerk
+  const user = await currentUser();
+
+  // 4. Extract their primary email address
+  const userEmail = user?.emailAddresses[0]?.emailAddress;
+
+  // 5. THE BOUNCER: If the email doesn't match YOURS, kick them out!
+  if (userEmail !== "plukyljunsenido@gmail.com") {
+    redirect("/"); // Instantly boots them to the public homepage
+  }
+
+  // If they pass the check, load the secure database data!
   const inquiries = await getInquiries();
 
   return (
