@@ -1,20 +1,29 @@
 import { getInquiries } from "../actions";
 import { UserButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server"; // 1. Import the server user
-import { redirect } from "next/navigation"; // 2. Import Next.js redirect
+import { currentUser } from "@clerk/nextjs/server";
 
-export const dynamic = "force-dynamic";
-
-export default async function AdminDashboard() {
-  // 3. Grab the currently logged-in user's profile from Clerk
+export default async function AdminPage() {
   const user = await currentUser();
-
-  // 4. Extract their primary email address
   const userEmail = user?.emailAddresses[0]?.emailAddress;
 
-  // 5. THE BOUNCER: If the email doesn't match YOURS, kick them out!
-  if (userEmail !== "plukyljunsenido@gmail.com") {
-    redirect("/"); // Instantly boots them to the public homepage
+  // THE NEW BOUNCER: Show a locked door, but give them the log out button!
+  if (userEmail !== "your.actual.email@gmail.com") { // <-- Put your real email here!
+    return (
+      <main className="min-h-screen bg-gray-900 p-8 flex flex-col items-center justify-center text-white">
+        <h1 className="text-4xl font-bold mb-4 text-red-500">Access Denied</h1>
+        <p className="text-gray-400 mb-8">
+          The account <span className="text-white font-bold">{userEmail}</span> is not authorized to view this page.
+        </p>
+        <div className="flex flex-col items-center bg-gray-800 p-6 rounded-lg border border-gray-700">
+          <p className="mb-4 text-sm text-gray-300">Switch accounts or log out below:</p>
+          <UserButton 
+            appearance={{
+              elements: { userButtonAvatarBox: "!w-16 !h-16", userButtonTrigger: "!w-16 !h-16" }
+            }} 
+          />
+        </div>
+      </main>
+    );
   }
 
   // If they pass the check, load the secure database data!
