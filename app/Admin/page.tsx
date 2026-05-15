@@ -17,7 +17,7 @@ export default async function AdminDashboard() {
         <UserButton 
           appearance={{
             elements: {
-              userButtonAvatarBox: "w-14 h-14" // Increases size to 56px (default is much smaller!)
+              userButtonAvatarBox: "w-20 h-20" // Increases size to 56px (default is much smaller!)
             }
           }}
         /> 
