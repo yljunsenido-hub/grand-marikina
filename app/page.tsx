@@ -1,12 +1,14 @@
 // 1. Import the Link component at the top of the file
 import Link from 'next/link';
 import VenueCard from '../components/VenueCard';
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center text-center px-4">
+      <Hero />
       <h1 className="text-5xl font-bold mb-6 mt-10">
-        Grand Marikina Events Place
+        New Event Place
       </h1>
       <p className="text-xl text-gray-400 mb-8">
         Book your dream wedding or corporate event today.
