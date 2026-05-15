@@ -7,7 +7,7 @@ export default async function AdminPage() {
   const userEmail = user?.emailAddresses[0]?.emailAddress;
 
   // THE NEW BOUNCER: Show a locked door, but give them the log out button!
-  if (userEmail !== "your.actual.email@gmail.com") { // <-- Put your real email here!
+  if (userEmail !== "plukyljunsenido@gmail.com") { // <-- Put your real email here!
     return (
       <main className="min-h-screen bg-gray-900 p-8 flex flex-col items-center justify-center text-white">
         <h1 className="text-4xl font-bold mb-4 text-red-500">Access Denied</h1>
