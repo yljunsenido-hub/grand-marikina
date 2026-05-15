@@ -9,14 +9,22 @@ export default async function AdminDashboard() {
   return (
     <main className="min-h-screen bg-gray-900 p-8 flex flex-col items-center text-white">
 
-      <div className="flex justify-between items-center mb-8 max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <UserButton/> 
+      {/* 1. The Header Row: Matches the table width and pushes the button to the far right */}
+      <div className="w-full max-w-5xl flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold">Admin Dashboard</h1>
+        
+        {/* 2. The Bigger User Button: Using Clerk's appearance prop to inject Tailwind sizing */}
+        <UserButton 
+          appearance={{
+            elements: {
+              userButtonAvatarBox: "w-14 h-14" // Increases size to 56px (default is much smaller!)
+            }
+          }}
+        /> 
       </div>
 
+      {/* 3. The Table Container */}
       <div className="w-full max-w-5xl">
-        <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
-
         <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
           <table className="w-full text-left">
             <thead className="bg-gray-950">
@@ -51,6 +59,7 @@ export default async function AdminDashboard() {
           </table>
         </div>
       </div>
+      
     </main>
   );
 }
