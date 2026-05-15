@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.3.4",
     "@prisma/adapter-better-sqlite3": "^7.8.0",
     "@prisma/client": "^6.19.3",
     "@prisma/config": "^7.8.0",

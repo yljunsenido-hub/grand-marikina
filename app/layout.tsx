@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,34 +26,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        
-        <Toaster 
-          position="bottom-right" 
-          toastOptions={{
-            style: {
-              background: '#333',
-              color: '#fff',
-            },
-          }} 
-        />
+    <ClerkProvider>
+      <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+        <body className="min-h-full flex flex-col">
 
-        {/* --- OUR NEW GLOBAL NAVBAR --- */}
-        <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-800">
-          <Link href="/" className="text-l font-bold tracking-wider">
-            GRAND MARIKINA
-          </Link>
-          <div className="flex gap-6">
-            <Link href="/" className="hover:text-gray-400 transition">Home</Link>
-            <Link href="/About" className="hover:text-gray-400 transition">About</Link>
-            <Link href="/Contact" className="hover:text-gray-400 transition">Contact</Link>
-          </div>
-        </nav>
+          <Toaster 
+            position="bottom-right" 
+            toastOptions={{
+              style: {
+                background: '#333',
+                color: '#fff',
+              },
+            }} 
+          />
 
-        {/* --- THIS IS WHERE YOUR PAGE CONTENT GOES --- */}
-        {children}
-      </body>
-    </html>
+          {/* --- OUR NEW GLOBAL NAVBAR --- */}
+          <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-800">
+            <Link href="/" className="text-l font-bold tracking-wider">
+              GRAND MARIKINA
+            </Link>
+            <div className="flex gap-6">
+              <Link href="/" className="hover:text-gray-400 transition">Home</Link>
+              <Link href="/About" className="hover:text-gray-400 transition">About</Link>
+              <Link href="/Contact" className="hover:text-gray-400 transition">Contact</Link>
+            </div>
+          </nav>
+
+          {/* --- THIS IS WHERE YOUR PAGE CONTENT GOES --- */}
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { getInquiries } from "../actions";
+import { UserButton } from "@clerk/nextjs";
 
 export const dynamic = "force-dynamic";
 
@@ -7,6 +8,12 @@ export default async function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-gray-900 p-8 flex flex-col items-center text-white">
+
+      <div className="flex justify-between items-center mb-8 max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <UserButton/> 
+      </div>
+
       <div className="w-full max-w-5xl">
         <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
 
