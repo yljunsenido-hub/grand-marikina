@@ -4,11 +4,14 @@ import VenueCard from "../components/VenueCard";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import { motion } from "framer-motion";
+import Gallery from "../components/Gallery";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center text-center">
       <Hero />
+
+      <Gallery />
 
       <Features />
 
