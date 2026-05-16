@@ -15,8 +15,8 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} /* Only animates once per refresh */
-        transition={{ duration: 0.6 }}
+        viewport={{ once: false }} /* Only animates once per refresh */
+        transition={{ duration: 1.0 }}
         className="text-center mb-16"
       >
         <h1 className="text-5xl font-bold mb-6 mt-10">New Event Place</h1>

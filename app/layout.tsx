@@ -27,28 +27,48 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <html
+        lang="en"
+        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      >
         <body className="min-h-full flex flex-col">
-
-          <Toaster 
-            position="bottom-right" 
+          <Toaster
+            position="bottom-right"
             toastOptions={{
               style: {
-                background: '#333',
-                color: '#fff',
+                background: "#333",
+                color: "#fff",
               },
-            }} 
+            }}
           />
 
           {/* --- OUR NEW GLOBAL NAVBAR --- */}
-          <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-800">
-            <Link href="/" className="text-l font-bold tracking-wider">
+          <nav className="flex items-center justify-between px-8 py-4 border-b bg-gray-800">
+            <Link
+              href="/"
+              className="text-l font-bold tracking-wider text-white"
+            >
               GRAND MARIKINA
             </Link>
             <div className="flex gap-6">
-              <Link href="/" className="hover:text-gray-400 transition">Home</Link>
-              <Link href="/About" className="hover:text-gray-400 transition">About</Link>
-              <Link href="/Contact" className="hover:text-gray-400 transition">Contact</Link>
+              <Link
+                href="/"
+                className="hover:text-gray-400 transition text-white"
+              >
+                Home
+              </Link>
+              <Link
+                href="/About"
+                className="hover:text-gray-400 transition text-white"
+              >
+                About
+              </Link>
+              <Link
+                href="/Contact"
+                className="hover:text-gray-400 transition text-white"
+              >
+                Contact
+              </Link>
             </div>
           </nav>
 
